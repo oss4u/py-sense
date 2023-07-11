@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "opnsenseapi"
+description = "Python API for access the opnsense api"
+version = "0.0.1"
+license = "Apache-2.0"
+
+authors = [
+  "Marc Ende <me@sys-int.de>"
+]
+maintainers = [
+   "Marc Ende <me@sys-int.de>"
+]
+requires-python = ">=3.8"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "License :: OSI Approved :: Apache-2.0",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+readme = "README.md"
+
+exclude = [
+  "my_package/excluded.py"
+]
+
+[tool.poetry.dependencies]
+requests = "^2.13.0"
+
+
+
+
+[project.urls]
+homepage = "https://github.com/oss4u/opnsenseapi"
+repository = "https://github.com/oss4u/opnsenseapi"
+documentation = "https://opnsenseapi.readthedocs.io/"
+"Bug Tracker" = "https://github.com/oss4u/opnsenseapi/issues"
+Discussions = "https://github.com/oss4u/opnsenseapi/discussions"
+Changelog = "https://opnsenseapi.readthedocs.io/en/latest/changelog.html"
+
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
