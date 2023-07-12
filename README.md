@@ -1,1 +1,1 @@
-# opnsenseapi
+# opnsense-api

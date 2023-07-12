@@ -32,7 +32,13 @@ class HostOverrideTest(unittest.TestCase):
             pass
         mocker = MockValidator
         ho = HostOverride(mocker)
-        test = Host(id="abc",enabled=True,hostname="hostname", domain="domain", rr="A", server="10.10.10.10", description="descr")
+        test = Host(id="abc",
+                    enabled=True,
+                    hostname="hostname",
+                    domain="domain",
+                    rr="A",
+                    server="10.10.10.10",
+                    description="descr")
         expected = json.dumps({
             "host": {
                 "enabled": "1",
