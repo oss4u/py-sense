@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.2.0 - 2023-07-12
+#### Features
+- Added functionality to host overrides (CRUD) - (720a51f) - eBeyond
+
+- - -
+
 ## 0.1.0 - 2023-07-12
 #### Continuous Integration
 - Test CI - (6e736cb) - eBeyond
