@@ -2,6 +2,21 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.3.0 - 2023-07-12
+#### Continuous Integration
+- restructured ci build - (d420865) - eBeyond
+- restructured ci build - (0c03d01) - eBeyond
+- restructured ci build - (44b8145) - eBeyond
+- restructured ci build - (d957897) - eBeyond
+- restructured ci build - (bdbd0d4) - eBeyond
+- restructured ci build - (71c2b00) - eBeyond
+- restructured ci build - (ba54c20) - eBeyond
+- fixed issues with release - (d3bac6b) - eBeyond
+#### Features
+- modified return of get, read, delete - (c0462d4) - eBeyond
+
+- - -
+
 ## 0.2.0 - 2023-07-12
 #### Features
 - Added functionality to host overrides (CRUD) - (720a51f) - eBeyond
