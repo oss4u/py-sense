@@ -35,7 +35,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
-      if: github.
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
