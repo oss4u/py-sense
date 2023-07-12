@@ -73,7 +73,10 @@ class HostOverride(object):
 
     def read(self, id: str):
         result = self.ctrl.non_modifying_request(self.module, self.controller, 'getHostOverride', params=[id])
-        print(result)
+        if len(result) > 0:
+            return self.create_host_from_json(result)
+        else:
+            raise Exception("No hosts found.")
 
     def update(self, host: Host):
         data = self.create_json_from_host(host)
@@ -82,16 +85,20 @@ class HostOverride(object):
         if result['result'] == "saved":
             return host
         else:
-            print(f"ERROR: {result}")
-            return host
+            raise Exception(f"Error updating host: {result}")
 
-    def delete(self, host: Host):
-        result = self.ctrl.modifying_request(self.module, self.controller, 'delHostOverride', params=[host.id])
-        print(result)
+    def delete_by_host(self, host: Host):
+        return self.delete_by_id(host.id)
+
+    def delete_by_id(self, id: str):
+        result = self.ctrl.modifying_request(self.module, self.controller, 'delHostOverride', params=[id])
+        if result['result'] == 'deleted':
+            return True
+        else:
+            return False
 
     def get(self, id):
-        result = self.ctrl.non_modifying_request(self.module, self.controller, 'getHostOverride', params=[id])
-        print(result)
+        return self.read(id)
 
     def list(self):
         result = self.ctrl.non_modifying_request(self.module, self.controller, 'searchHostOverride')
@@ -102,7 +109,7 @@ class HostOverride(object):
         print(result)
 
     def create_host_from_json(self, result_json):
-        host_json = json.loads(result_json)['host']
+        host_json = result_json['host']
         if host_json['enabled'] == "1":
             enabled = True
         else:

@@ -31,7 +31,7 @@ class HostOverrideTest(unittest.TestCase):
                 "description": "descr"
             }
         }, indent=2)
-        result = ho.create_host_from_json(test)
+        result = ho.create_host_from_json(json.loads(test))
 
         print(result)
         print(expected)
