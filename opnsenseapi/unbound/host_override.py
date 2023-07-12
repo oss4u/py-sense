@@ -31,7 +31,7 @@ class Host:
         self.server = server
         self.description = description
         self.mx = mx
-        self.mxprio = mxprio
+        self.mxprio = int(mxprio)
         self.id = id
 
     def __eq__(self, other):
