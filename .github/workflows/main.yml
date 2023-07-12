@@ -12,8 +12,6 @@ permissions:
 
 jobs:
   build:
-    needs:
-      - test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -41,6 +39,6 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: "dist/*.whl"
-        bodyFile: "body.md"
+        omitBody: true
         prerelease: true
         tag: ${{ steps.release.outputs.version }}
