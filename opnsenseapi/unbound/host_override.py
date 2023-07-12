@@ -1,5 +1,5 @@
 import json
-
+import math
 from opnsenseapi.ifaces.opnsense import _OpnSense
 
 
@@ -31,7 +31,10 @@ class Host:
         self.server = server
         self.description = description
         self.mx = mx
-        self.mxprio = int(mxprio)
+        if mxprio:
+            self.mxprio = math.trunc(mxprio)
+        else:
+            self.mxprio = 0
         self.id = id
 
     def __eq__(self, other):
