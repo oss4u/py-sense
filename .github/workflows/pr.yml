@@ -19,6 +19,8 @@ jobs:
         uses: actions/checkout@main
         with:
           fetch-depth: 0
+          # pick the pr HEAD instead of the merge commit
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Set up Python 3.10
         uses: actions/setup-python@v3
         with:
