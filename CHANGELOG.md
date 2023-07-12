@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.3.1 - 2023-07-12
+#### Bug Fixes
+- issue with mxprio in host overrides - (5a2bf2f) - eBeyond
+- Fixed numeric error while using mxprio - (d9d3e77) - eBeyond
+
+- - -
+
 ## 0.3.0 - 2023-07-12
 #### Continuous Integration
 - restructured ci build - (d420865) - eBeyond
