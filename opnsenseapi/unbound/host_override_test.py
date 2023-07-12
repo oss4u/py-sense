@@ -11,6 +11,14 @@ class HostOverrideTest(unittest.TestCase):
             pass
         mocker = MockValidator
         ho = HostOverride(mocker)
+        expected = Host(
+            enabled=True,
+            hostname="hostname",
+            domain="domain",
+            rr="A",
+            server="10.10.10.10",
+            description="descr"
+        )
         test = json.dumps({
             "host": {
                 "enabled": "1",
@@ -23,9 +31,12 @@ class HostOverrideTest(unittest.TestCase):
                 "description": "descr"
             }
         }, indent=2)
-        h = ho.create_host_from_json(test)
+        result = ho.create_host_from_json(test)
 
-        self.assertEqual(True, True)  # add assertion here
+        print(result)
+        print(expected)
+
+        self.assertEqual(result, expected)  # add assertion here
 
     def test_json_to_host(self):
         class MockValidator(_OpnSense):

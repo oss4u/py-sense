@@ -34,6 +34,24 @@ class Host:
         self.mxprio = mxprio
         self.id = id
 
+    def __eq__(self, other):
+        if isinstance(self, other.__class__):
+            return \
+                    self.enabled == other.enabled and \
+                    self.hostname == other.hostname and \
+                    self.domain == other.domain and \
+                    self.rr == other.rr and \
+                    self.server == other.server and \
+                    self.description == other.description and \
+                    self.mx == other.mx and \
+                    self.mxprio == other.mxprio and \
+                    self.id == other.id
+        return False
+
+    def __str__(self):
+        return f'Host is id={self.id} enabled={self.enabled} hostname={self.hostname} domain={self.domain} server={self.server}' \
+               f' rr={self.rr} mx={self.mx} mxprio={self.mxprio} description={self.description}'
+
 
 class HostOverride(object):
     ctrl: _OpnSense
@@ -85,18 +103,26 @@ class HostOverride(object):
 
     def create_host_from_json(self, result_json):
         host_json = json.loads(result_json)['host']
-        if host_json['enabled'] == 1:
-            enabled = 1
+        if host_json['enabled'] == "1":
+            enabled = True
         else:
-            enabled = 0
+            enabled = False
+        if len(host_json['mxprio']) > 0:
+            mxprio = host_json['mxprio']
+        else:
+            mxprio = None
+        if len(host_json['mx']) > 0:
+            mx = host_json['mx']
+        else:
+            mx = None
         h = Host(
             enabled=enabled,
             hostname=host_json['hostname'],
             domain=host_json['domain'],
             server=host_json['server'],
             description=host_json['description'],
-            mxprio=host_json['mxprio'],
-            mx=host_json['mx'],
+            mxprio=mxprio,
+            mx=mx,
             rr=host_json['rr']
         )
         return h
