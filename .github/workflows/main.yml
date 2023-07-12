@@ -51,10 +51,8 @@ jobs:
         body_path: GITHUB_CHANGELOG.md
         tag_name: ${{ steps.release.outputs.version }}
 
-    - name: Publish Release
-      uses: ncipollo/release-action@v1
+    - name: Publish package
+      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
       with:
-        artifacts: "dist/*.whl"
-        omitBody: true
-        prerelease: true
-        tag: ${{ steps.release.outputs.version }}
+        user: __token__
+        password: ${{ secrets.PYPI_API_TOKEN }}
