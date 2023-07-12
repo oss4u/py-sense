@@ -17,6 +17,11 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
+    - run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git config --global user.email github-actions@github.com
+        git config --global user.name github-actions
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
@@ -31,14 +36,24 @@ jobs:
       uses: cocogitto/cocogitto-action@v3.5
       with:
         release: true
-        git-user: 'GHAction'
-        git-user-email: 'me@e-beyond.de'
+        git-user: 'github-actions'
+        git-user-email: 'github-actions@github.com'
+
+    - name: Generate Changelog
+      run: cog changelog --at ${{ steps.release.outputs.version }} -t full_hash > GITHUB_CHANGELOG.md
+
     - name: Build package
       run: python -m build
-    - name: Publish Release
-      uses: ncipollo/release-action@v1
+
+#    - name: Publish Release
+#      uses: ncipollo/release-action@v1
+#      with:
+#        artifacts: "dist/*.whl"
+#        omitBody: true
+#        prerelease: true
+#        tag: ${{ steps.release.outputs.version }}
+    - name: Upload github release
+      uses: softprops/action-gh-release@v1
       with:
-        artifacts: "dist/*.whl"
-        omitBody: true
-        prerelease: true
-        tag: ${{ steps.release.outputs.version }}
+        body_path: GITHUB_CHANGELOG.md
+        tag_name: ${{ steps.release.outputs.version }}
