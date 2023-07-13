@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.5.0 - 2023-07-13
+#### Features
+- Restructured Project - (0a25e0f) - eBeyond
+#### Refactoring
+- Restructured Project - (7882f44) - eBeyond
+
+- - -
+
 ## 0.4.0 - 2023-07-13
 #### Bug Fixes
 - Removed grappa-http due to wrong version - (e396d58) - eBeyond
