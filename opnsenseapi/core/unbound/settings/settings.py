@@ -9,9 +9,13 @@ class _Settings:
 
 class Settings(_Settings):
     ctrl: _OpnSense
+    module: str
+    controller: str
 
-    def __init__(self, ctrl: _OpnSense):
+    def __init__(self, ctrl: _OpnSense, module="unbound"):
         self.ctrl = ctrl
+        self.module = module
+        self.controller = "settings"
 
     def host_override(self) -> _HostOverride:
-        return HostOverride(self.ctrl)
+        return HostOverride(ctrl=self.ctrl, module=self.module, controller=self.controller)

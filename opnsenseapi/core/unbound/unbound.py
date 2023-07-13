@@ -9,9 +9,11 @@ class _Unbound:
 
 class Unbound(_Unbound):
     ctrl: _OpnSense
+    module: str
 
     def __init__(self, ctrl: _OpnSense):
         self.ctrl = ctrl
+        self.module = "unbound"
 
     def settings(self) -> _Settings:
-        return Settings(self.ctrl)
+        return Settings(self.ctrl, module=self.module)

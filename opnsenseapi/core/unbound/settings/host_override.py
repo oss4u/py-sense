@@ -32,11 +32,13 @@ class _HostOverride:
 
 class HostOverride(_HostOverride):
     ctrl: _OpnSense
-    module = "unbound"
-    controller = "settings"
+    module: str
+    controller: str
 
-    def __init__(self, ctrl: _OpnSense):
+    def __init__(self, ctrl: _OpnSense, module="unbound", controller="settings"):
         self.ctrl = ctrl
+        self.module = module
+        self.controller = controller
 
     def create(self, host: Host):
         data = host.to_json()
