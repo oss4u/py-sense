@@ -76,7 +76,8 @@ class OpnSense(_OpnSense):
             url,
             verify=self.verify_cert,
             auth=self.auth)
-        return r.json()
+        return r.text
 
     def unbound_host_overrides(self):
-        return opnsenseapi.unbound.host_override.HostOverride(self)
+        return opnsenseapi.core.unbound.settings.host_override.HostOverride(self)
+
