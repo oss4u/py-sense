@@ -1,11 +1,36 @@
 import json
-import math
 
 from opnsenseapi.core.unbound.settings.models.hosts import Host, MXHost, AHost
 from opnsenseapi.ifaces.opnsense import _OpnSense
 
 
-class HostOverride(object):
+class _HostOverride:
+    def create(self, host: Host):
+        pass
+
+    def read(self, id: str):
+        pass
+
+    def update(self, host: Host):
+        pass
+
+    def delete_by_id(self, id: str):
+        pass
+
+    def delete_by_host(self, host: Host):
+        pass
+
+    def get(self, id):
+        pass
+
+    def list(self):
+        pass
+
+    def search(self):
+        pass
+
+
+class HostOverride(_HostOverride):
     ctrl: _OpnSense
     module = "unbound"
     controller = "settings"
@@ -40,15 +65,15 @@ class HostOverride(object):
         else:
             raise Exception(f"Error updating host: {result}")
 
-    def delete_by_host(self, host: Host):
-        return self.delete_by_id(host.id)
-
     def delete_by_id(self, id: str):
         result = self.ctrl.modifying_request(self.module, self.controller, 'delHostOverride', params=[id])
         if result['result'] == 'deleted':
             return True
         else:
             return False
+
+    def delete_by_host(self, host: Host):
+        return self.delete_by_id(host.id)
 
     def get(self, id):
         return self.read(id)

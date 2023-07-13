@@ -4,7 +4,7 @@ import requests
 import urllib3
 from requests.auth import HTTPBasicAuth
 
-from opnsenseapi.core.core import Core
+from opnsenseapi.core.core import Core, _Core
 from opnsenseapi.ifaces.opnsense import _OpnSense
 
 
@@ -78,5 +78,5 @@ class OpnSense(_OpnSense):
             auth=self.auth)
         return r.text
 
-    def core(self):
+    def core(self) -> _Core:
         return Core(self)
