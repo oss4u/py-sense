@@ -1,8 +1,8 @@
 # flake8: noqa
 
-from opnsenseapi import opnsense
-from opnsenseapi.unbound.host_override import Host
 import os
+
+from opnsenseapi import opnsense
 
 fw = opnsense.OpnSense(
     opnsense_address=os.getenv("OPNSENSE_ADDRESS"),
@@ -11,7 +11,7 @@ fw = opnsense.OpnSense(
     verify_cert=False
 )
 
-unbound = fw.unbound_host_overrides()
+unbound = fw.core().get_unbound().get_settings().get_host_override()
 unbound.list()
 # host = Host(id="eafe4ace-6b3d-4a4e-99f0-56c2b8176bf4",enabled=True, hostname="test01", server="10.10.10.10", domain="test.de",description="My Test Host", rr="A")
 #

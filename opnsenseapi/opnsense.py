@@ -4,7 +4,7 @@ import requests
 import urllib3
 from requests.auth import HTTPBasicAuth
 
-import opnsenseapi.unbound.host_override
+from opnsenseapi.core.core import Core
 from opnsenseapi.ifaces.opnsense import _OpnSense
 
 
@@ -78,6 +78,5 @@ class OpnSense(_OpnSense):
             auth=self.auth)
         return r.text
 
-    def unbound_host_overrides(self):
-        return opnsenseapi.core.unbound.settings.host_override.HostOverride(self)
-
+    def core(self):
+        return Core(self)

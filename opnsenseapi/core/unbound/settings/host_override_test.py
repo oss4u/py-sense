@@ -2,8 +2,8 @@ import json
 import unittest
 import pook
 
-import opnsenseapi.opnsense
 from opnsenseapi.core.unbound.settings.host_override import HostOverride
+from opnsenseapi.opnsense import OpnSense
 
 
 class HostOverrideTest(unittest.TestCase):
@@ -37,7 +37,7 @@ class HostOverrideTest(unittest.TestCase):
         pook.get('https://fw:8443/api/unbound/settings/getHostOverride/existing', reply=200,
                  response_headers={'Server': 'nginx'},
                  response_json=response)
-        os = opnsenseapi.opnsense.OpnSense(opnsense_address="https://fw:8443", opnsense_secret="os-secret", opnsense_key="os-key")
+        os = OpnSense(opnsense_address="https://fw:8443", opnsense_secret="os-secret", opnsense_key="os-key")
         overr = HostOverride(os)
         result = overr.get("existing")
         print(result)
@@ -72,7 +72,8 @@ class HostOverrideTest(unittest.TestCase):
         pook.get('https://fw:8443/api/unbound/settings/getHostOverride/abc', reply=404,
                  response_headers={'Server': 'nginx'},
                  response_json=response)
-        os = opnsenseapi.opnsense.OpnSense(opnsense_address="https://fw:8443", opnsense_secret="os-secret", opnsense_key="os-key")
+        os = OpnSense(opnsense_address="https://fw:8443", opnsense_secret="os-secret",
+                                           opnsense_key="os-key")
         overr = HostOverride(os)
         result = overr.get("abc")
         print(result)
