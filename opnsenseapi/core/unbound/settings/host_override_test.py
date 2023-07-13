@@ -1,7 +1,6 @@
 import json
 import unittest
 import pook
-from grappa_http import should
 
 import opnsenseapi.opnsense
 from opnsenseapi.core.unbound.settings.host_override import HostOverride
