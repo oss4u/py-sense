@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.4.0 - 2023-07-13
+#### Bug Fixes
+- Removed grappa-http due to wrong version - (e396d58) - eBeyond
+- Removed grappa-http due to wrong version - (52dd130) - eBeyond
+- Removed grappa-http due to wrong version - (720e0f1) - eBeyond
+#### Features
+- Restructured Project - (d0bb93c) - eBeyond
+
+- - -
+
 ## 0.3.1 - 2023-07-12
 #### Bug Fixes
 - issue with mxprio in host overrides - (5a2bf2f) - eBeyond
