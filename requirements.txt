@@ -1,6 +1,6 @@
 requests==2.31.0
 build==1.2.1
 flake8==7.0.0
-hatch==1.7.0
+hatch==1.9.4
 grappa==1.0.1
 pook
