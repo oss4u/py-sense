@@ -1,4 +1,4 @@
-requests==2.31.0
+requests==2.32.3
 build==1.2.1
 flake8==7.0.0
 hatch==1.9.4
